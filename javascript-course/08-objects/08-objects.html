@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+    <script>
+        /* const product = {
+            name: 'socks',
+            price: 1090
+        };
+
+        console.log(product);
+        console.log(product.name);
+        console.log(product.price);
+
+        product.name = 'cotton socks';
+        console.log(product);
+
+        product.newProperty = true;
+        console.log(product);
+
+        delete product.newProperty;
+        console.log(product); */
+
+        /* const product2 = {
+            name: 'shirt',
+            ['delivery-time']: '1 day',
+            rating: { //nested object
+                stars: 4.5,
+                count: 87
+            },
+            fun: function function1() { //function inside object = method
+                console.log('function inside an object');
+            },
+        };
+
+        console.log(product2);
+        console.log(product2.name); //dot notation
+        console.log(product2['name']); //bracket notation lets us use properties that don't work with dot notation.
+        console.log(product2['delivery-time']);
+
+        console.log(product2.rating.count);
+        product2.fun(); //will run the fuction inside the object
+
+        console.log(typeof console.log); */
+
+        //2 more built-in objects: JSON, localStorage
+        /*
+        JSON = JavaScript Object Notation
+        
+        it's a similar syntax to JavaScript object but has less features.
+        
+        All properties and strings must use double quotes and also doesn't support functions.
+        
+        JSON can be undestood by almost every progamming language.
+        
+        We use JSON when sending data between two computers that may be using different progamming languages.
+        
+        It's also used to store data.
+
+        Built-in JSON object helps us convert JavaScript Objects to JSON.
+        */
+
+        /* //JavaScript Object to JSON:
+        console.log(JSON.stringify(product2));
+
+        //JSON to JavaScript Object:
+        const jsonString = JSON.stringify(product2)
+        console.log(JSON.parse(jsonString)); */
+
+        /*
+        localStorage is used to save values more permanently.
+
+        localStorage.setItem = puts a value in localStorage
+        localStorage.getItem = gets a value from localStorage
+        */
+
+        //null vs undefined
+        /*
+        we use 'null' when: intentionally want something to be empty.
+        */
+
+
+        //Auto-Boxing
+
+        /* console.log('hello'.length); //strings can also have properties
+        console.log('hello'.toLocaleUpperCase()); //strings also have methods. */
+
+        /* 
+        JavaScript automatically wraps strings in a special object that has properties and methods.
+        
+        That also works with other types of values like: numbers and booleans.
+
+        3.0.toString()
+
+        true.toString()
+
+        The only thing is that Auto-Boxing does not work with 'null' and 'undefined'.
+        */
+
+
+        //Objects are references
+        const object1 = {
+            message: 'hello',
+        };
+        //The object is in he computer's memory, the variable only references it.
+
+        const object2 = object1; //this line does not creates a copy of the object, only makes a copy of the reference that points to the object.
+
+        object1.message = 'Good job!'; //even though we use const we still can change the values inside the object.
+        console.log(object1);
+        console.log(object2);
+
+        const object3 = {
+            message: 'Good job!',
+        };
+
+        console.log(object3 === object1); //compares the references, not the values inside. So because object3 it's a different reference than object1 that's why this code results in false.
+
+        console.log(object2 === object1); //object2 has the same reference of object1 that's why the result is true.
+        
+
+        //Shortcuts for Objects
+
+        const object4 = {
+            message: 'Good job!',
+            price: 799
+        };
+
+        //const message = object4.message;
+        const { message, price } = object4; /* destructuring - this will take de message property out of object4 and save it in a variable called 'message' doing the same thing that the line above. (Can be used for multiple properties.) */
+        console.log(message);
+        console.log(price);
+
+        const object5 = {
+            //message: message, //if the property and value are the same. We can actually type it out once (shorthand property).
+            message,
+            /* method: function function1() {
+                console.log('method');
+            }, */
+            method() { //this do the same as the method above. (shorthand method)
+                console.log('method');
+            }
+        };
+        console.log(object5);
+        object5.method();
+    </script>
+</body>
+</html>

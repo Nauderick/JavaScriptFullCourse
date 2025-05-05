@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button onclick="playGame('heads');">heads</button>
+    <button onclick="playGame('tails');">tails</button>
+    <button onclick="
+        localStorage.removeItem('score');
+        console.log('Score reseted.');
+    ">Reset Score</button>
+
+    <script>
+
+        let score = JSON.parse(localStorage.getItem('score')) || {
+            wins: 0,
+            losses: 0
+        }
+        console.log(score);
+        
+        function playGame(guess) {
+
+            const randomNumber = Math.random();
+            
+            if (randomNumber < 0.5) {
+                let result = 'heads';
+                console.log(result);
+                // guess === result ? console.log('You win!') : console.log('You lose!');
+
+                if (guess === result) {
+                    console.log('You win!');
+                    score.wins++;
+                } else {
+                    console.log('You lose!');
+                    score.losses++;
+                }
+
+            } else {
+                let result = 'tails';
+                console.log(result);
+                // guess === result ? console.log('You win!') : console.log('You lose!');
+
+                if (guess === result) {
+                    console.log('You win!');
+                    score.wins++;
+                } else {
+                    console.log('You lose!');
+                    score.losses++;
+                }
+            }
+
+            localStorage.setItem('score', JSON.stringify(score));
+
+            console.log(score);
+        };
+    </script>
+</body>
+</html>

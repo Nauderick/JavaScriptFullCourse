@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function convertLength(length, from, to) {
+            
+            if (from !== 'miles' && from !== 'km' && from !== 'ft') {
+                console.log(`Invalid unit: ${from}`)
+            } else if (to !== 'miles' && to !== 'km' && to !== 'ft') {
+                console.log(`Invalid unit: ${to}`)
+            }
+            
+            if (from === 'miles' && to === 'km') {
+                return console.log(length * 1.6 + ' Km');
+            } else if (from === 'km' && to === 'miles') {
+                return console.log(length / 1.6 + ' Miles');
+            } else if (from === 'miles' && to === 'ft') {
+                return console.log(length * 5280 + ' ft');
+            } else if (from === 'km' && to === 'ft') {
+                return console.log(length * 3281 + ' ft');
+            } else if (from === 'ft' && to === 'km') {
+                return console.log(length / 3281 + ' km');
+            } else if (from === 'ft' && to === 'miles') {
+                return console.log(length / 5280 + ' miles');
+            } else if (from === to) {
+                return console.log(`${length} ${to}`);
+            }
+
+        }
+
+        convertLength(32, 'km', 'miles');
+        convertLength(5, 'miles', 'km');
+        convertLength(50, 'km', 'km');
+        convertLength(22, 'miles', 'miles');
+        convertLength(5, 'miles', 'ft');
+        convertLength(5, 'km', 'ft');
+        convertLength(22, 'ft', 'ft');
+        convertLength(32, 'miles', 'km');
+        convertLength(32, 'miles', 'lbs');
+        convertLength(32, 'lbs', 'km');
+    </script>
+</body>
+</html>
