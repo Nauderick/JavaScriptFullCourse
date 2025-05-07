@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" 
+    onclick="console.log(`Cart Quantity: ${cartQuantity}`);">
+        Show Quantity
+    </button>
+
+    <button type="button"
+    onclick="updateCartQuantity(1);">
+        Add to Cart
+    </button>
+
+    <button type="button"
+    onclick="updateCartQuantity(-1);">
+        Remove from Cart
+    </button>
+
+    <button type="button"
+    onclick="updateCartQuantity(2);">
+        +2
+    </button>
+
+    <button type="button"
+    onclick="updateCartQuantity(-2);">
+        -2
+    </button>
+
+    <button type="button"
+    onclick="updateCartQuantity(3);">
+        +3
+    </button>
+
+    <button type="button"
+    onclick="updateCartQuantity(-3);">
+        -3
+    </button>
+
+    <button type="button"
+    onclick="updateCartQuantity(4);">
+        +4
+    </button>
+
+    <button type="button"
+    onclick="updateCartQuantity(5);">
+        +5
+    </button>
+
+    <button type="button" 
+    onclick="resetCart();">
+        Reset Cart
+    </button>
+
+    <p class="js-displayQuantity"></p>
+
+    <!--Variable Re-assignment Shortcuts
+    ++      variable = variable + 1
+    --      variable = variable - 1
+    += 2    variable = variable + 2
+    -= 2    variable = variable - 2
+    *= 2    variable = variable * 2
+    /= 2    variable = variable / 2
+    -->
+
+    <script>
+        let cartQuantity = JSON.parse(localStorage.getItem('cart')) ||  0;
+
+        const displayQuantity = document.querySelector('.js-displayQuantity');
+
+        displayQuantity.innerHTML = `Cart Quantity: ${cartQuantity}`;
+
+        function updateCartQuantity(quantity) {
+            
+            if (cartQuantity + quantity >= 10) {
+                alert('The cart is full!.');
+                cartQuantity = 10;
+                //console.log(`Cart Quantity: ${cartQuantity}`);
+                //return;
+
+            } else if (cartQuantity + quantity <= 0) {
+                alert('Not enough items in the cart');
+                cartQuantity = 0;
+                //console.log(`Cart Quantity: ${cartQuantity}`);
+                //return;
+
+            } else {
+                cartQuantity += quantity;
+                //console.log(`Cart Quantity: ${cartQuantity}`);
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cartQuantity));
+            displayQuantity.innerHTML = `Cart Quantity: ${cartQuantity}`;
+
+        }
+
+        function resetCart() {
+            cartQuantity = 0;
+            displayQuantity.innerText = `Cart was reset.\nCart Quantity: ${cartQuantity}`;
+            localStorage.removeItem('cart');
+        }
+    </script>
+</body>
+</html>
