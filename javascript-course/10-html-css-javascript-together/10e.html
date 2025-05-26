@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .black-button {
+            background-color: black;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .is-toggled {
+            background-color: rgb(230, 230, 230);
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <button class="black-button gaming-button" onclick="toggle('.gaming-button')">Gaming</button>
+    <button class="black-button music-button" onclick="toggle('.music-button')">Music</button>
+    <button class="black-button tech-button" onclick="toggle('.tech-button')">Tech</button>
+
+    <script>
+        /* const gamingButton = document.querySelector('.gaming-button');
+        const musicButton = document.querySelector('.music-button');
+        const techButton = document.querySelector('.tech-button');
+
+        function toggle(input) {
+            if (input === 'G') {
+                if (!gamingButton.classList.contains('is-toggled')) {
+                    gamingButton.classList.add('is-toggled');
+                } else {
+                    gamingButton.classList.remove('is-toggled');
+                }
+            } else if (input === 'M') {
+                if (!musicButton.classList.contains('is-toggled')) {
+                    musicButton.classList.add('is-toggled')
+                } else {
+                    musicButton.classList.remove('is-toggled');
+                }
+            } else {
+                if (!techButton.classList.contains('is-toggled')) {
+                    techButton.classList.add('is-toggled');
+                } else {
+                    techButton.classList.remove('is-toggled')
+                }
+            }
+        } */
+    
+        //toke it from exercise solutions
+       function toggle(seletor) {
+        const button = document.querySelector(seletor);
+        if (!button.classList.contains('is-toggled')) {
+            button.classList.add('is-toggled');
+        } else {
+            button.classList.remove('is-toggled');
+        }
+       };
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Projects</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .subscribe-button {
+            border: none;
+            background-color: black;
+            color: white;
+            padding: 10px 15px;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .is-subscribed {
+            background-color: rgb(240, 240, 240);
+            color: black;
+        }
+
+        .cost-input {
+            font-size: 15px;
+            padding: 10px;
+        }
+
+        .calculate-button {
+            padding: 12px 15px;
+            border: none;
+            background-color: green;
+            color: white;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <p>YouTube Subscribe Button</p>
+
+    <button onclick="subscribe()" class="js-subscribe-button subscribe-button">Subscribe</button>
+
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders under $40 = +$10 shipping.</p>
+    <p>Orders over $40 = FREE shipping.</p>
+
+    <input type="number" name="" id="" placeholder="Cost of order" onkeydown="handleCostKeydown(event);" class="js-cost-input cost-input">
+
+    <button class="js-calculate calculate-button" onclick="calculateTotal();">Calculate</button>
+
+    <p class="js-total-cost"></p>
+
+    <script>
+
+        //String(25); //built-in fuction to convert to string.
+        //console.log('25' - 5);
+        //if a string only contains a number, and we - * / it'll be converted into a number.
+        //console.log('25' + 5); //this will convert both into strings and add them together.
+        //DON'T DO MATH USING STRINGS!
+
+        //The document object represents the webpage, the window it's a built-in object that represents the browser.
+       /*  window.document
+        window.console.log('window');
+        window.alert(); */
+
+        function handleCostKeydown(event) {
+            event.key === 'Enter' ? calculateTotal() : null
+        }
+
+        function calculateTotal() {
+            const inputElement = document.querySelector('.js-cost-input');
+            //for input elements uses .value other than .innerHTML
+            let cost = Number(inputElement.value);
+            
+            if (cost < 40 && cost >= 0) {
+                cost = cost + 10;
+            }
+
+            document.querySelector('.js-total-cost').innerHTML = `$${cost}`;
+        }
+        
+        function subscribe() {
+            const buttonElement = document.querySelector('.js-subscribe-button');
+
+            if (buttonElement.innerText === 'Subscribe') {
+                buttonElement.innerHTML = 'Subscribed';
+                buttonElement.classList.add('is-subscribed');
+            } else {
+                buttonElement.innerHTML = 'Subscribe';
+                buttonElement.classList.remove('is-subscribed');
+            }
+        };
+    </script>
+</body>
+</html>
